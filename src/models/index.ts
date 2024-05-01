@@ -1,3 +1,5 @@
+import { UserRole } from "@root/db/models/User"
+
 export class APIEmptyResponse {}
 export class APIResponse<T> {
   data: T
@@ -13,6 +15,7 @@ export class APIErrorResponse {
 }
 export type APIUserCreateRequest = {
   name: string
-  surname: string
   email:string
+  address: string
+  role: UserRole
 }

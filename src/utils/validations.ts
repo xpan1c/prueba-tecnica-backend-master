@@ -3,5 +3,5 @@ import { bool } from "aws-sdk/clients/signer";
 /* Validation functions */
 
 export function validateItemData(data: APIUserCreateRequest): boolean {
-    return !!data?.name && !!data?.surname && !!data?.email;
+    return !!data?.name && !!data?.address && !!data?.email && !!data?.role;
 }

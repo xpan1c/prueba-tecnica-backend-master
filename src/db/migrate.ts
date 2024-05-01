@@ -25,7 +25,7 @@ const sequelize = new Sequelize(sqConf);
 
 const umzug = new Umzug({
   migrations: { glob: ['migrations/*.ts', { cwd: __dirname }] },
-  context: sequelize,
+  context: sequelize.getQueryInterface(),
   logger: console,
 });
 
