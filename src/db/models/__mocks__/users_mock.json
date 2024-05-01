@@ -1,0 +1,25 @@
+{
+  "users": [
+    {
+      "email": "test1@gmail.com",
+      "name": "Test 1",
+      "surname": "Test 1",
+      "updated_at": "2021-20-03",
+      "created_at": "2021-20-03"
+    },
+    {
+      "id": "test2@gmail.com",
+      "name": "Test 2",
+      "surname": "Test 2",
+      "updated_at": "2021-20-03",
+      "created_at": "2021-20-03"
+    }
+  ],
+  "user": {
+    "id": "test1@gmail.com",
+    "name": "Test 1",
+    "surname": "Test 1",
+    "updated_at": "2021-20-03",
+    "created_at": "2021-20-03"
+  }
+}

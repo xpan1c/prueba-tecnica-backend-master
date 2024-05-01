@@ -1,0 +1,9 @@
+node_modules
+.aws-sam
+samconfig.toml
+env.json
+dist/
+.esbuild/.build/src/functions/queueHandler/handler.js
+.esbuild/.build/src/functions/queueHandler/handler.js.map
+coverage
+.history/
