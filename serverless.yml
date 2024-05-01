@@ -1,0 +1,49 @@
+service: prueba-tecnica-brickken
+
+frameworkVersion: '3'
+
+plugins:
+  - serverless-offline
+
+provider:
+  name: 'aws'
+  runtime: 'nodejs14.x'
+  region: 'eu-west-3'
+  stage: 'local'
+  apiGateway:
+    minimumCompressionSize: 1024
+    shouldStartNameWithService: true
+  environment:
+    AWS_NODEJS_CONNECTION_REUSE_ENABLED: '1'
+    NODE_OPTIONS: '--enable-source-maps --stack-trace-limit=1000'
+
+functions:
+
+  putItem:
+    handler: dist/handlers/put-item.putItemHandler
+    events:
+      - http:
+          method: 'post'
+          path: '/'
+          request:
+            schemas:
+              application/json: schema
+
+
+package:
+  individually: true
+
+custom:
+  region: ${self:provider.region}
+  esbuild:
+    bundle: true
+    minify: false
+    sourcemap: true
+    exclude:
+      - 'aws-sdk'
+    target: 'node14'
+    define:
+      require.resolve: undefined
+    platform: 'node'
+    concurrency: 10,
+ 
