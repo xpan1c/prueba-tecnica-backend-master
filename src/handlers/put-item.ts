@@ -27,8 +27,9 @@ export const putItemHandler = async function (event: APIGatewayProxyEvent): Prom
  * and if it doesnt exist, creates a new user.
  *  * @param event:APIGatewayProxyEvent 
  *      - email:string (PK) from event.body
- *      - surname:string  from event.body
+ *      - role:string  from event.body
  *      - name:string  from event.body
+ *      - role:string  from event.body
  *  
  * @returns Error 400 if user already exist 
  *          Error 405 if HTTP method is not POST
@@ -59,7 +60,8 @@ export const putItem = async (
         const newUser = await UserManager.createUser(
             userRequest.email,
             userRequest.name,
-            userRequest.surname
+            userRequest.address,
+            userRequest.role
         );
 
         return buildResponse(new APIResponse(newUser));

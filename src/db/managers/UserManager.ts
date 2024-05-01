@@ -1,4 +1,4 @@
-import { User } from "@db/models/User";
+import { User, UserRole } from "@db/models/User";
 
 export class UserManager {
 
@@ -27,13 +27,15 @@ export class UserManager {
     static async createUser(
         email: string,
         name: string,
-        surname: string,
+        address: string,
+        role: UserRole
     ): Promise<User> {
 
         return await User.create({
             name: name,
-            surname: surname,
-            email: email
+            address: address,
+            email: email,
+            role: role
         });
     }
     

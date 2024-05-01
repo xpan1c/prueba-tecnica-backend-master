@@ -1,25 +1,29 @@
 # Backend Challenge Instructions
+>[!NOTE]
+><details><summary>Vagrant Setup</summary>
+>
+>The Vagrant setup can be found in the branch [BCC-03-configure-local-env](./docs/vagrant-setup.md).
+>
+></details>
 
 1. Unzip the original repository.
 
 2. Create a new private repository on your GitHub account.
 
-3. Add the following GitHub users as collaborators to your new repository: `smarichal`, `nabil-brickken`.
+3. Clone your new repository to your local development environment.
 
-4. Clone your new repository to your local development environment.
+4. Copy the content from the original repository to your new repository.
 
-5. Copy the content from the original repository to your new repository.
+5. Make the initial commit.
 
-6. Make the initial commit.
+6. Bellow in this document you will find the tasks to be completed within this challenge. The tasks should be performed in order. For each task, create a new branch with the same name of the task. All the tasks are described in different documents in the folder `docs`. For example, for the first task named `BCC-01-req-analysis-and-domain-model.md` you should create a branch named `BCC-01-create-domain-model`.
 
-7. Bellow in this document you will find the tasks to be completed within this challenge. The tasks should be performed in order. For each task, create a new branch with the same name of the task. All the tasks are described in different documents in the folder `docs`. For example, for the first task named `BCC-01-req-analysis-and-domain-model.md` you should create a branch named `BCC-01-create-domain-model`.
+7. Once you complete a task, create a pull request with the main branch as the base.
 
-8. Once you complete a task, create a pull request with the main branch as the base.
-
-9. For the next task, create a new branch from the branch of the previous task (not from the main branch). When
+8. For the next task, create a new branch from the branch of the previous task (not from the main branch). When
    finished, create a pull request with the branch of the previous task as the base.
 
-10. Repeat step 9 for all remaining tasks.
+9. Repeat step 8 for all remaining tasks.
 
 
 ### Branching Strategy
