@@ -17,7 +17,12 @@ export const Config = {
     url: process.env.DATABASE_URL,
     dialect: 'postgres'
   },
-  dbLog: process.env.DBLOG == "true" ? Logger.debug : false,
+  dbLog: (sql: string, timing?: number) => {
+    if (process.env.DBLOG === 'true') {
+      const logMessage = `SQL: ${sql}` + (timing ? `; Execution time: ${timing}ms` : '');
+      Logger.debug(logMessage);
+    }
+  },
   logLevel:
     LogLevel[process.env.LOG_LEVEL as keyof typeof LogLevel] || LogLevel.DEBUG,
   AWS: {

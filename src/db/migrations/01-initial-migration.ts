@@ -74,6 +74,7 @@ export const up: Migration = async ({ context: queryInterface }) => {
     token_price: DataTypes.FLOAT,
     min_investment: DataTypes.FLOAT,
     max_investment: DataTypes.FLOAT,
+    //TODO implement status hook
     status: {
       type: DataTypes.ENUM('SCHEDULED', 'ONGOING', 'FINISHED'),
       allowNull: false
@@ -105,6 +106,7 @@ export const up: Migration = async ({ context: queryInterface }) => {
     amount: DataTypes.FLOAT,
     tokens_purchased: DataTypes.INTEGER
   });
+  
 };
 
 export const down: Migration = async ({ context: queryInterface }) => {

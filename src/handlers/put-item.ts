@@ -26,8 +26,8 @@ export const putItemHandler = async function (event: APIGatewayProxyEvent): Prom
  * Receives User data from HTTP post. Check in the DB that there is no user with the same email, 
  * and if it doesnt exist, creates a new user.
  *  * @param event:APIGatewayProxyEvent 
- *      - email:string (PK) from event.body
- *      - role:string  from event.body
+ *      - email:string from event.body
+ *      - address:string from event.body
  *      - name:string  from event.body
  *      - role:string  from event.body
  *  
@@ -51,7 +51,7 @@ export const putItem = async (
         if (!validateItemData(userRequest))
             throw new BadRequestError("Invalid Data");
 
-        const posibleUser = await UserManager.findUser(userRequest.email);
+        const posibleUser = await UserManager.findUserByEmail(userRequest.email);
 
         if (posibleUser) {
             throw new BadRequestError("User exists")

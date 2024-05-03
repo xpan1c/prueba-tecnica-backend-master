@@ -31,4 +31,7 @@ export class User extends Model<User> {
 
   @Column({ type: DataType.ENUM(UserRole.Tokenizer, UserRole.Investor) })
   role!: UserRole;
+
+  @HasMany(() => Investment)
+  investments?: Investment[];
 }

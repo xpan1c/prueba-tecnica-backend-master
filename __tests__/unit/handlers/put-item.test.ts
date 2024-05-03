@@ -54,7 +54,8 @@ describe('Test putItem', function () {
             email: 'test1@gmail.com',
             name: 'isNull',
             address: 'notError',
-            role: "TOKENIZER"
+            role: "TOKENIZER",
+            id: expect.any(String)
         }])
 
     })

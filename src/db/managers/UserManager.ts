@@ -1,4 +1,7 @@
-import { User, UserRole } from "@db/models/User";
+import { Investment } from "../models/Investment";
+import { Offering } from "../models/Offering";
+import { User, UserRole } from "../models/User";
+import { v4 as uuidv4 } from 'uuid';
 
 export class UserManager {
 
@@ -8,12 +11,43 @@ export class UserManager {
      * @param email 
      * @returns 
      */
-    static async findUser(email: string): Promise<User> {
-        return await User.findOne({
+    static async findUserByEmail(email: string): Promise<User> {
+        const user = await User.findOne({
             where: {
                 email: email
             },
         });
+        return user
+    }
+
+    static async findUserById(id: string): Promise<User> {
+        const user = await User.findOne({
+            where: {
+                id: id
+            },
+        });
+        return user
+    }
+    static async findAllInvestorsByCompanyId(companyId: string): Promise<User[]> {
+        const investors = await User.findAll({
+            include: [{
+                model: Investment,
+                required: true,
+                attributes: [],
+                include: [{
+                    model: Offering,
+                    required: true,
+                    where: { companyId },
+                    attributes: []
+                }]
+            }],
+            where: {
+                role: UserRole.Investor
+            },
+            attributes: ['id', 'name', 'email', 'address']
+        });
+        const plainInvestors = investors.map(investor => investor.get({ plain: true }))
+        return plainInvestors;
     }
 
 
@@ -32,11 +66,12 @@ export class UserManager {
     ): Promise<User> {
 
         return await User.create({
+            id: uuidv4(),
             name: name,
             address: address,
             email: email,
             role: role
         });
     }
-    
+
 }

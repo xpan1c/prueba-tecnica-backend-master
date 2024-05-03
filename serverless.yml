@@ -1,4 +1,4 @@
-service: prueba-tecnica-brickken
+service: prueba-tecnica
 
 frameworkVersion: '3'
 
@@ -29,7 +29,47 @@ functions:
             schemas:
               application/json: schema
 
+  putCompany:
+    handler: dist/handlers/put-company.putCompanyHandler
+    events:
+      - http:
+          method: post
+          path: /put-company
 
+  putUser:
+    handler: dist/handlers/put-user.putUserHandler
+    events:
+      - http:
+          method: post
+          path: /put-user
+
+  putOffering:
+    handler: dist/handlers/put-offering.putOfferingHandler
+    events:
+      - http:
+          method: post
+          path: /put-offering
+
+  invest:
+    handler: dist/handlers/invest.investHandler
+    events:
+      - http:
+          method: post
+          path: /invest
+
+  getAllCompanies:
+    handler: dist/handlers/get-all-companies.getAllCompaniesHandler
+    events:
+      - http:
+          method: get
+          path: /get-all-companies
+
+  getAllInvestorsByCompany:
+    handler: dist/handlers/get-all-investors-by-company.getAllInvestorsByCompanyHandler
+    events:
+      - http:
+          method: get
+          path: /get-all-investors-by-company/{id}
 package:
   individually: true
 
