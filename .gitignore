@@ -7,3 +7,4 @@ dist/
 .esbuild/.build/src/functions/queueHandler/handler.js.map
 coverage
 .history/
+.vagrant/
