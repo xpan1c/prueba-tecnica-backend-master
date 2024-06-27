@@ -1,23 +1,34 @@
 import {
-    Table,
-    Column,
-    PrimaryKey,
-    AutoIncrement,
-    UpdatedAt,
-    Model,
-    CreatedAt,
-  } from "sequelize-typescript";
-  @Table({ tableName: "users", schema: "public" , timestamps: true})
-  export class User extends Model<User> {
- 
-    @PrimaryKey
-    @Column
-    email: string;
+  Table,
+  Column,
+  PrimaryKey,
+  Model,
+  DataType,
+  HasMany,
+} from "sequelize-typescript";
+import { Investment } from "./Investment";
 
-    @Column
-    name!: string;
-  
-    @Column
-    surname!: string;
-  
-  }
+export enum UserRole {
+  Tokenizer = "TOKENIZER",
+  Investor = "INVESTOR"
+}
+
+@Table({ tableName: "users", timestamps: false })
+export class User extends Model<User> {
+
+  @PrimaryKey
+  @Column
+  id!: string;
+
+  @Column
+  name!: string;
+
+  @Column
+  email!: string;
+
+  @Column
+  address!: string;
+
+  @Column({ type: DataType.ENUM(UserRole.Tokenizer, UserRole.Investor) })
+  role!: UserRole;
+}

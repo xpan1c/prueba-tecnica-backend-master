@@ -22,8 +22,9 @@ describe('Test putItem', function () {
     it('should throw Bad Request when user exists', async () => {
         const mockEvent = constructAPIGwEvent({
             name: 'test',
-            surname: 'test',
-            email: 'test1@gmail.com'
+            address: 'test',
+            email: 'test1@gmail.com',
+            role: "TOKENIZER"
         }, { method: 'POST'})
         const response = await putItem(mockEvent)
         expect(response.statusCode).toBe(StatusCodes.BAD_REQUEST)
@@ -36,8 +37,9 @@ describe('Test putItem', function () {
 
         const mockEvent = constructAPIGwEvent({
             name: "isNull",
-            surname: 'notError',
-            email: 'test1@gmail.com'
+            address: 'notError',
+            email: 'test1@gmail.com',
+            role: "TOKENIZER"
         }, {method: 'POST'})
         const response = await putItem(mockEvent)
 
@@ -51,7 +53,8 @@ describe('Test putItem', function () {
         expect(User.create).toHaveBeenCalledWith(...[{
             email: 'test1@gmail.com',
             name: 'isNull',
-            surname: 'notError'
+            address: 'notError',
+            role: "TOKENIZER"
         }])
 
     })
